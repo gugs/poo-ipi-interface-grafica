@@ -15,6 +15,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import org.agenda.ipi.dao.ContatoDAO;
+import org.agenda.ipi.model.Contato;
+
 public class TelaAgenda extends JFrame{
 
 	//Barra de menu
@@ -102,6 +105,7 @@ public class TelaAgenda extends JFrame{
 		btnFechar = new JButton("Fechar");
 		btnFechar.addActionListener(new FecharAction());
 		panelBotoes.setLayout(new FlowLayout());
+		btnSalvar.addActionListener(new SalvarAction());
 		panelBotoes.add(btnSalvar);
 		panelBotoes.add(btnLimpar);
 		panelBotoes.add(btnFechar);
@@ -131,6 +135,15 @@ public class TelaAgenda extends JFrame{
 			txfEmail.setText("");
 		}
 		
+	}
+	
+	
+	private class SalvarAction implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			ContatoDAO.getInstance().addItem(new Contato(0, txfNome.getText(), txfEmail.getText(), txfTelefone.getText()));
+		}
 	}
 	
 }
