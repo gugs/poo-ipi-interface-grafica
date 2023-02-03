@@ -20,11 +20,14 @@ import org.agenda.ipi.model.Contato;
 
 public class TelaAgenda extends JFrame{
 
+	TelaLocalizar telaLocalizar;
+	
 	//Barra de menu
 	private JMenuBar barra;
 	private JMenu mAgenda;
 	private JMenu mSobre;
 	private JMenuItem miNovo;
+	private JMenuItem localizarAgenda;
 	private JMenuItem miSair;
 	
 	//formulário
@@ -70,8 +73,18 @@ public class TelaAgenda extends JFrame{
 		mSobre = new JMenu("Sobre");
 		
 		miNovo = new JMenuItem("Novo");
+		localizarAgenda = new JMenuItem("Localizar");
+		localizarAgenda.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				telaLocalizar = new TelaLocalizar();
+				telaLocalizar.setVisible(true);
+			}
+		});
 		miSair = new JMenuItem("Sair");
 		mAgenda.add(miNovo);
+		mAgenda.add(localizarAgenda);
 		mAgenda.add(miSair);
 		barra.add(mAgenda);
 		barra.add(mSobre);
